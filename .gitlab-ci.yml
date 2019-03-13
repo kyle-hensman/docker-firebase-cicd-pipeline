@@ -7,7 +7,7 @@ stages:
 test:
   stage: test
   script:
-    - ./app npm run test
+    - cd app && npm run test
 
 deploy_production:
   stage: deploy
