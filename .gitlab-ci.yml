@@ -6,12 +6,8 @@ stages:
 
 test:
   stage: test
-  environment: Production
-  only:
-    - master
   script:
-    - npm install
-    - npm run test
+    - ./app npm run test
 
 deploy_production:
   stage: deploy
