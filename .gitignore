@@ -66,3 +66,6 @@ node_modules/
 
 # swap files
 *.swp
+
+# save files
+*.save
