@@ -1,0 +1,35 @@
+image: node:latest
+
+stages:
+  - test
+  - deploy
+
+cache:
+  paths:
+    - node_modules/
+
+test:
+  state: test
+  script:
+    - npm run test
+
+deploy_branch:
+  stage: deploy
+  script:
+    - npm install -g firebase-tools
+    - npm install
+    - firebase use --token $FIREBASE_DEPLOY_KEY cicd-tester
+    - firebase deploy -m "Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --non-interactive --token $FIREBASE_DEPLOY_KEY
+  except:
+    - master
+
+deploy_production:
+  stage: deploy
+  environment: Production
+  only:
+    - master
+  script:
+    - npm install -g firebase-tools
+    - npm install
+    - firebase use --token $FIREBASE_DEPLOY_KEY cicd-tester
+    - firebase deploy -m "Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --non-interactive --token $FIREBASE_DEPLOY_KEY
