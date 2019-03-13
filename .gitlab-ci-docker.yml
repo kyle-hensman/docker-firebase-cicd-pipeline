@@ -9,7 +9,7 @@ cache:
     - node_modules/
 
 test:
-  state: test
+  stage: test
   script:
     - npm run test
 
