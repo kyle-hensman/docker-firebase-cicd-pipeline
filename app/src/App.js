@@ -3,6 +3,9 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  state = {
+    test: 'test',
+  }
   render() {
     return (
       <div className="App">
@@ -17,7 +20,7 @@ class App extends Component {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Learn React
+            Learn React NOW
           </a>
         </header>
       </div>
